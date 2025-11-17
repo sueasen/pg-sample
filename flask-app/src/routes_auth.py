@@ -37,7 +37,7 @@ def login() -> Response:
 @bp_auth.route("/api/auth/logout", methods=["POST"])
 def logout() -> Response:
     auth_header : str = request.headers.get("Authorization", "")
-    supabase_result, status_code = supabase_auth_service.signout(
+    supabase_result, status_code = supabase_auth_service.logout(
         access_token=auth_header[7:]
     )
     return jsonify({"message": "Logout successful."}), 200
